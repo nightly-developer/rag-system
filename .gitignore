@@ -1,0 +1,6 @@
+__*
+venv/
+lib/
+test*
+*.pdf
+*.sh
