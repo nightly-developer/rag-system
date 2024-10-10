@@ -3,7 +3,7 @@ from langchain_community.vectorstores import SupabaseVectorStore
 from langchain_core.documents import Document
 from typing import List
 # import Embeddings
-from langchain_openai import OpenAIEmbeddings
+# from langchain_openai import OpenAIEmbeddings
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 import os
 import asyncio
@@ -26,17 +26,22 @@ vector_store = SupabaseVectorStore(
   )
 
 # Create a Supabase client
-async def upload_to_supabase(documents:List[Document],ids:List[int]):
-  ids = await vector_store.aadd_documents(documents=documents,ids=ids)
-  print(ids)
+async def upload(documents:List[Document],ids:List[int]):
+  return await vector_store.aadd_documents(documents=documents,ids=ids)
 
 # Get the last id from the documents table
 async def get_last_id():
   return supabase.table('documents').select('id') .order('id', desc=True).limit(1).execute()  
+
+async def retrieve_documents():
+  query = "what is dataset in weka?"
+  retriever = vector_store.as_retriever()
+  matched_docs = retriever.invoke(query)
+  print(matched_docs[0])
   
-async def main():
-  response = await get_last_id()
-  print(response)
+def main():
+  res = asyncio.run(get_last_id())
+  print(res.data[0]['id'])
 
 if __name__ == "__main__":
-  asyncio.run(main())
+  main()

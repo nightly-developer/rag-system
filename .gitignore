@@ -4,3 +4,5 @@ lib/
 test*
 *.pdf
 *.sh
+.env
+node_modules/
