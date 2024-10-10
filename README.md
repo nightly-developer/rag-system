@@ -5,7 +5,7 @@ RAG, or Retrieval-Augmented Generation, is a machine learning approach that comb
 
 Creating a Retrieval-Augmented Generation (RAG) based chatbot that utilizes PDFs as a knowledge base involves several steps, as outlined in your points. Here’s a detailed explanation of each step in the process:
 
-![[block diagram.png]]
+![block diagram](https://github.com/nightly-developer/rag-system/blob/main/block%20diagram.png)
 ### 1. Getting PDF
 
 - **PDF Ingestion**: First, you need to obtain the PDF documents that will serve as the knowledge base for your chatbot. This can be done by collecting relevant PDFs from various sources, such as research papers, manuals, or documentation.
